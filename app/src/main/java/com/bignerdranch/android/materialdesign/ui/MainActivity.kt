@@ -1,8 +1,9 @@
-package com.bignerdranch.android.materialdesign
+package com.bignerdranch.android.materialdesign.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bignerdranch.android.materialdesign.ui.main.MainFragment
+import com.bignerdranch.android.materialdesign.R
+import com.bignerdranch.android.materialdesign.ui.picture.PictureOfTheDayFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, PictureOfTheDayFragment.newInstance())
                 .commitNow()
         }
     }
