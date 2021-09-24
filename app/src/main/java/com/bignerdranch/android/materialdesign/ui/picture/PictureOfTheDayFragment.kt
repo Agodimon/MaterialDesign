@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -22,6 +23,9 @@ import kotlinx.android.synthetic.main.main_fragment.*
 class PictureOfTheDayFragment : Fragment() {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+    private lateinit var bottomSheetHeader: TextView
+    private lateinit var bottomSheetContent: TextView
+
     private val viewModel: PictureOfTheDayViewModel by lazy {
 
         ViewModelProvider(this).get(PictureOfTheDayViewModel::class.java)
@@ -39,12 +43,16 @@ class PictureOfTheDayFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getData()
             .observe(viewLifecycleOwner, Observer<PictureOfTheDayData> { renderData(it) })
-        setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
+
+
         input_layout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse("https://en.wikipedia.org/wiki/${input_edit_text.text.toString()}")
             })
         }
+        setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
+        bottomSheetHeader = view.findViewById(R.id.bottom_sheet_description_header)
+        bottomSheetContent = view.findViewById(R.id.bottom_sheet_description)
         setBottomAppBar(view)
     }
 
@@ -70,6 +78,8 @@ class PictureOfTheDayFragment : Fragment() {
     private fun renderData(data: PictureOfTheDayData) {
         when (data) {
             is PictureOfTheDayData.Success -> {
+                main.visibility = View.VISIBLE
+                loadingLayout.visibility = View.GONE
                 val serverResponseData = data.serverResponseData
                 val url = serverResponseData.url
                 if (url.isNullOrEmpty()) {
@@ -82,15 +92,24 @@ class PictureOfTheDayFragment : Fragment() {
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
+                    bottomSheetHeader.text = serverResponseData.title
+                    bottomSheetContent.text = serverResponseData.explanation
                 }
             }
             is PictureOfTheDayData.Loading -> {
-                //showLoading()
+
+                main.visibility = View.INVISIBLE
+                loadingLayout.visibility = View.VISIBLE
+
             }
             is PictureOfTheDayData.Error -> {
-                //showError(data.error.message)
+
+                main.visibility = View.VISIBLE
+                loadingLayout.visibility = View.GONE
+
                 toast(data.error.message)
             }
+
         }
     }
 
@@ -119,6 +138,23 @@ class PictureOfTheDayFragment : Fragment() {
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+
+        bottomSheetBehavior.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                when (newState) {
+                    BottomSheetBehavior.STATE_DRAGGING -> toast("STATE_DRAGGING")
+                    BottomSheetBehavior.STATE_COLLAPSED -> toast("STATE_COLLAPSED")
+                    BottomSheetBehavior.STATE_EXPANDED -> toast("STATE_EXPANDED")
+                    BottomSheetBehavior.STATE_HALF_EXPANDED -> toast("STATE_HALF_EXPANDED")
+                    BottomSheetBehavior.STATE_HIDDEN -> toast("STATE_HIDDEN")
+                    BottomSheetBehavior.STATE_SETTLING -> toast("STATE_SETTLING")
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+            }
+        })
     }
 
     private fun Fragment.toast(string: String?) {
