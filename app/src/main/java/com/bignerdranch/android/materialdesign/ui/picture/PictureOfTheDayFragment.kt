@@ -18,6 +18,7 @@ import com.bignerdranch.android.materialdesign.ui.MainActivity
 import com.bignerdranch.android.materialdesign.ui.chips.ChipsFragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior.*
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class PictureOfTheDayFragment : Fragment() {
@@ -136,19 +137,19 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
-        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        bottomSheetBehavior = from(bottomSheet)
+        bottomSheetBehavior.state = STATE_COLLAPSED
 
         bottomSheetBehavior.addBottomSheetCallback(object :
-            BottomSheetBehavior.BottomSheetCallback() {
+            BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
-                    BottomSheetBehavior.STATE_DRAGGING -> toast("STATE_DRAGGING")
-                    BottomSheetBehavior.STATE_COLLAPSED -> toast("STATE_COLLAPSED")
-                    BottomSheetBehavior.STATE_EXPANDED -> toast("STATE_EXPANDED")
-                    BottomSheetBehavior.STATE_HALF_EXPANDED -> toast("STATE_HALF_EXPANDED")
-                    BottomSheetBehavior.STATE_HIDDEN -> toast("STATE_HIDDEN")
-                    BottomSheetBehavior.STATE_SETTLING -> toast("STATE_SETTLING")
+                    STATE_DRAGGING -> toast("STATE_DRAGGING")
+                    STATE_COLLAPSED -> toast("STATE_COLLAPSED")
+                    STATE_EXPANDED -> toast("STATE_EXPANDED")
+                    STATE_HALF_EXPANDED -> toast("STATE_HALF_EXPANDED")
+                    STATE_HIDDEN -> toast("STATE_HIDDEN")
+                    STATE_SETTLING -> toast("STATE_SETTLING")
                 }
             }
 
