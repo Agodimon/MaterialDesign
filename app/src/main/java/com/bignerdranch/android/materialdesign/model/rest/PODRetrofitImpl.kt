@@ -1,4 +1,4 @@
-package com.bignerdranch.android.materialdesign.ui.picture
+package com.bignerdranch.android.materialdesign.model.rest
 
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor

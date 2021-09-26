@@ -14,8 +14,10 @@ import androidx.lifecycle.ViewModelProvider
 
 import coil.api.load
 import com.bignerdranch.android.materialdesign.R
+import com.bignerdranch.android.materialdesign.model.rest.PictureOfTheDayData
 import com.bignerdranch.android.materialdesign.ui.MainActivity
 import com.bignerdranch.android.materialdesign.ui.chips.ChipsFragment
+import com.bignerdranch.android.materialdesign.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.*

@@ -1,9 +1,12 @@
-package com.bignerdranch.android.materialdesign.ui.picture
+package com.bignerdranch.android.materialdesign.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.materialdesign.BuildConfig
+import com.bignerdranch.android.materialdesign.model.rest.PODRetrofitImpl
+import com.bignerdranch.android.materialdesign.model.rest.PODServerResponseData
+import com.bignerdranch.android.materialdesign.model.rest.PictureOfTheDayData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

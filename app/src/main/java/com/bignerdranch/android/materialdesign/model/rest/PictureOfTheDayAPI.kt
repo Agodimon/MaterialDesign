@@ -1,4 +1,4 @@
-package com.bignerdranch.android.materialdesign.ui.picture
+package com.bignerdranch.android.materialdesign.model.rest
 
 import retrofit2.Call
 import retrofit2.http.GET
