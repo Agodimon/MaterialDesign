@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/frag_chip_background"
     android:orientation="vertical">
 
     <LinearLayout
@@ -44,7 +44,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/frag_chips_layout_margin_top"
         android:orientation="horizontal">
 
         <com.google.android.material.chip.Chip
@@ -64,14 +64,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Chip icon"
-            app:iconStartPadding="10dp"
+            app:iconStartPadding="@dimen/frag_chips_icon_start_padding"
             app:chipIcon="@drawable/ic_archive" />
     </LinearLayout>
 
     <com.google.android.material.chip.ChipGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="@dimen/frag_chips_layout_margin_top">
 
         <com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
@@ -97,9 +97,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/frag_chips_layout_margin"
         android:text="Choose One"
-        android:textSize="18sp" />
+        android:textSize="@dimen/frag_chips_text_size" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroup"
@@ -129,12 +129,12 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="@dimen/frag_chips_layout_margin_top">
 
         <com.google.android.material.chip.ChipGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:chipSpacingHorizontal="25dp"
+            app:chipSpacingHorizontal="@dimen/frag_chips_chip_spacing_horizontal"
             app:singleLine="true">
 
             <com.google.android.material.chip.Chip
@@ -199,6 +199,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/frag_chips_id_chip_close_layout_margin_top"
         android:text="Close Icon Listener" />
 </LinearLayout>

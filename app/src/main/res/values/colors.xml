@@ -11,4 +11,10 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="color_gray">#66000000</color>
+    <color name="id_fab_tint">#FFFFFF</color>
+    <color name="frag_chip_background">#FFFFFF</color>
+    <color name="id_bottom_sheet_container_background">#f6f6fa</color>
+    <color name="id_bottom_sheet_line_background">#663b4351</color>
+    <color name="id_bottom_sheet_description_header_text_color">#000</color>
+    <color name="id_bottom_sheet_description_text_color">#000</color>
 </resources>
