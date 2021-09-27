@@ -3,9 +3,7 @@
     <dimen name="id_main_padding_start">10dp</dimen>
     <dimen name="id_main_padding_end">10dp</dimen>
     <dimen name="id_input_layout_width">0dp</dimen>
-    <dimen name="frag_chips_layout_margin_top">16dp</dimen>
     <dimen name="frag_chips_icon_start_padding">10dp</dimen>
-    <dimen name="frag_chips_layout_margin_top">16dp</dimen>
     <dimen name="frag_chips_layout_margin">8dp</dimen>
     <dimen name="frag_chips_text_size">18sp</dimen>
     <dimen name="frag_chips_layout_margin_top">16dp</dimen>
