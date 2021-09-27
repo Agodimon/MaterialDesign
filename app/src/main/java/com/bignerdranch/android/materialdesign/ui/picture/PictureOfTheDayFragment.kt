@@ -1,5 +1,6 @@
 package com.bignerdranch.android.materialdesign.ui.picture
 
+import SettingsFragment
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -130,12 +131,19 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_fav -> toast(getString(R.string.favourite))
-            R.id.app_bar_settings -> toast(getString(R.string.settings))
+            R.id.app_bar_settings -> activity?.apply {
+                this.supportFragmentManager
+                    .beginTransaction()
+                    .add(R.id.container, SettingsFragment())
+                    .addToBackStack(null)
+                    .commitAllowingStateLoss()
+            }
             android.R.id.home -> {
                 activity?.let {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
                 }
             }
+            R.id.app_bar_search -> toast(getString(R.string.search))
         }
         return super.onOptionsItemSelected(item)
     }
