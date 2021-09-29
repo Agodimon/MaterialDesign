@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#2962FF</color>
     <color name="color_gray">#66000000</color>
     <color name="id_fab_tint">#FFFFFF</color>
     <color name="frag_chip_background">#FFFFFF</color>
@@ -31,7 +31,7 @@
     <color name="orange_limon">#F4D136</color>
     <color name="pale_violet_red">#F436D1</color>
     <color name="steel_blue">#367FF4</color>
-
+    <color name="colorAccent40Alfa">#662962FF</color>
     <color name="ivory">#FFFFF0</color>
     <color name="light_yellow">#FFFFE0</color>
     <color name="yellow">#FFFF00</color>
