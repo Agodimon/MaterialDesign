@@ -1,6 +1,7 @@
 package com.bignerdranch.android.materialdesign.ui.picture
 
 import SettingsFragment
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -16,6 +17,7 @@ import com.bignerdranch.android.materialdesign.R
 import com.bignerdranch.android.materialdesign.databinding.MainFragmentBinding
 import com.bignerdranch.android.materialdesign.model.rest.PictureOfTheDayData
 import com.bignerdranch.android.materialdesign.ui.MainActivity
+import com.bignerdranch.android.materialdesign.ui.api.ApiActivity
 import com.bignerdranch.android.materialdesign.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -130,7 +132,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> toast(getString(R.string.favourite))
+            R.id.app_bar_fav -> startActivity(Intent(context,ApiActivity::class.java))
             R.id.app_bar_settings -> activity?.apply {
                 this.supportFragmentManager
                     .beginTransaction()
