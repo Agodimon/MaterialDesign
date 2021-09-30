@@ -9,6 +9,7 @@ class ApiActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_api)
-        view_pager.adapter = ViewPagerAdapter(supportFragmentManager)
+        view_pager.adapter = ViewPagerAdapter(baseContext, supportFragmentManager)
+        tab_layout.setupWithViewPager(view_pager)
     }
 }

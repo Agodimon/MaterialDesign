@@ -16,6 +16,10 @@
     <string name="name_of_default_theme">Theme deafult</string>
     <string name="name_of_my_custom_theme_blue">Aqua theme</string>
 
+    <string name="earth" translatable="false">Earth</string>
+    <string name="mars" translatable="false">Mars</string>
+    <string name="weather" translatable="false">Weather</string>
+
 </resources>
 
 
