@@ -13,7 +13,7 @@
         android:theme="@style/DefaultTheme">
         <activity
             android:name=".ui.api.ApiActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">

@@ -14,10 +14,11 @@ private const val WEATHER_FRAGMENT = 2
 class ViewPagerAdapter(
     val context: Context,
     fm: FragmentManager
-) :
-    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+
     private val fragments = arrayOf(
-        EarthFragment(), MarsFragment(),
+        EarthFragment(),
+        MarsFragment(),
         WeatherFragment()
     )
 
@@ -40,5 +41,4 @@ class ViewPagerAdapter(
             else -> context.getString(R.string.earth)
         }
     }
-
 }

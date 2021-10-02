@@ -3,19 +3,19 @@ package com.bignerdranch.android.materialdesign.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bignerdranch.android.materialdesign.App
 import com.bignerdranch.android.materialdesign.BuildConfig
-import com.bignerdranch.android.materialdesign.model.rest.PODRetrofitImpl
-import com.bignerdranch.android.materialdesign.model.rest.PODServerResponseData
+import com.bignerdranch.android.materialdesign.network.models.PODServerResponseData
 import com.bignerdranch.android.materialdesign.model.rest.PictureOfTheDayData
+import com.bignerdranch.android.materialdesign.network.ApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class PictureOfTheDayViewModel(
     private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
-    private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
-) :
-    ViewModel() {
+    private val apiService: ApiService = ApiService.create()
+) : ViewModel() {
 
     fun getData(): LiveData<PictureOfTheDayData> {
         sendServerRequest()
@@ -28,7 +28,7 @@ class PictureOfTheDayViewModel(
         if (apiKey.isBlank()) {
             PictureOfTheDayData.Error(Throwable("You need API key"))
         } else {
-            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey).enqueue(object :
+            apiService.getPictureOfTheDay(apiKey).enqueue(object :
                 Callback<PODServerResponseData> {
                 override fun onResponse(
                     call: Call<PODServerResponseData>,

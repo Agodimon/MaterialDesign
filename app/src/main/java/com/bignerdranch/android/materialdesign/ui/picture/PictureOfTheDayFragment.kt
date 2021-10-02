@@ -1,7 +1,6 @@
 package com.bignerdranch.android.materialdesign.ui.picture
 
 import SettingsFragment
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -18,6 +17,9 @@ import com.bignerdranch.android.materialdesign.databinding.MainFragmentBinding
 import com.bignerdranch.android.materialdesign.model.rest.PictureOfTheDayData
 import com.bignerdranch.android.materialdesign.ui.MainActivity
 import com.bignerdranch.android.materialdesign.ui.api.ApiActivity
+import com.bignerdranch.android.materialdesign.util.hide
+import com.bignerdranch.android.materialdesign.util.show
+import com.bignerdranch.android.materialdesign.util.toast
 import com.bignerdranch.android.materialdesign.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -68,11 +70,11 @@ class PictureOfTheDayFragment : Fragment() {
         when (data) {
             is PictureOfTheDayData.Success -> {
                 with(binding) {
-                    main.visibility = View.VISIBLE
-                    loadingLayout.visibility = View.GONE
+                    main.show()
+                    loadingLayout.hide()
                 }
                 val serverResponseData = data.serverResponseData
-                val url = serverResponseData.url
+                val url = serverResponseData.image
                 if (url.isNullOrEmpty()) {
                     toast("Url is empty")
                 } else {
@@ -175,13 +177,6 @@ class PictureOfTheDayFragment : Fragment() {
                     bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
                 }
             }
-        }
-    }
-
-    private fun Fragment.toast(string: String?) {
-        Toast.makeText(context, string, Toast.LENGTH_SHORT).apply {
-            setGravity(Gravity.BOTTOM, 0, 250)
-            show()
         }
     }
 
