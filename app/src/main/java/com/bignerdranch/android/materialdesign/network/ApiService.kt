@@ -1,5 +1,6 @@
 package com.bignerdranch.android.materialdesign.network
 
+import com.bignerdranch.android.materialdesign.network.models.EarthPhotosResponse
 import com.bignerdranch.android.materialdesign.network.models.MarsPhotosResponse
 import com.bignerdranch.android.materialdesign.network.models.PODServerResponseData
 import com.bignerdranch.android.materialdesign.network.utils.addJsonConverter
@@ -22,6 +23,16 @@ interface ApiService {
         @Query("sol") sol: Int = 1000,
         @Query("camera") camera: String = "NAVCAM"
     ): Call<MarsPhotosResponse>
+
+
+    @GET("planetary/earth/imagery")
+    fun getEarthPhotos(
+        @Query("api_key") apiKey: String,
+        @Query("lon") lon: Double = 100.75,
+        @Query("lat") lat: Double = 1.5,
+        @Query("date") date: String = "2014-02-01"
+    ): Call<EarthPhotosResponse>
+
 
     companion object {
         fun create(): ApiService {
