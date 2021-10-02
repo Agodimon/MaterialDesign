@@ -20,7 +20,7 @@ interface ApiService {
     fun getMarsPhotos(
         @Query("api_key") apiKey: String,
         @Query("sol") sol: Int = 1000,
-        @Query("camera") camera: String = "fhaz"
+        @Query("camera") camera: String = "NAVCAM"
     ): Call<MarsPhotosResponse>
 
     companion object {
