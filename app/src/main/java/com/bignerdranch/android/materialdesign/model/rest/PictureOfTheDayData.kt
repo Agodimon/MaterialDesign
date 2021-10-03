@@ -1,4 +1,4 @@
-package com.bignerdranch.android.materialdesign.ui.picture
+package com.bignerdranch.android.materialdesign.model.rest
 
 sealed class PictureOfTheDayData {
     data class Success(val serverResponseData: PODServerResponseData) : PictureOfTheDayData()
