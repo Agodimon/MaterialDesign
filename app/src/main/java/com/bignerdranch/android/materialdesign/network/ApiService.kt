@@ -33,6 +33,12 @@ interface ApiService {
         @Query("date") date: String = "2014-02-01"
     ): Call<EarthPhotosResponse>
 
+    @GET("insight_weather/")
+    fun getWeather(
+        @Query("api_key") apiKey: String,
+        @Query("feedtype") feedtype: String = "json",
+        @Query("ver") ver: Double = 1.0
+    ): Call<EarthPhotosResponse>
 
     companion object {
         fun create(): ApiService {

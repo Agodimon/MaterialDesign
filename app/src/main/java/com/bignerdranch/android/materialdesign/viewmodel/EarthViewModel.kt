@@ -29,7 +29,7 @@ class EarthViewModel(
         val apiKey: String = BuildConfig.NASA_API_KEY
 
         if (apiKey.isBlank()) {
-            PictureOfTheDayData.Error(Throwable("You need API key"))
+            PictureOfTheDayDataEarth.Error(Throwable("You need API key"))
         } else {
             apiService.getEarthPhotos(apiKey).enqueue(object : Callback<EarthPhotosResponse> {
                 override fun onResponse(
