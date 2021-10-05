@@ -19,6 +19,7 @@
     <string name="earth" translatable="false">Earth</string>
     <string name="mars" translatable="false">Mars</string>
     <string name="weather" translatable="false">Weather</string>
+    <string name="greeting_message">Picture Of The Day. Press to button here for begin!</string>
 
 </resources>
 

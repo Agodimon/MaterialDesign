@@ -20,9 +20,13 @@
     <dimen name="id_bottom_sheet_description_padding_end">10dp</dimen>
     <dimen name="id_navigation_view_layout_margin_start">8dp</dimen>
     <dimen name="id_navigation_view_layout_margin_top">8dp</dimen>
+    <dimen name="fab_cradle_margin">8dp</dimen>
+    <dimen name="fab_cradle_rounded_corner_radius">50dp</dimen>
     <dimen name="id_navigation_view_layout_margin_end">8dp</dimen>
     <dimen name="chip_text_size">10dp</dimen>
     <dimen name="settings_name_margin_top">20dp</dimen>
+    <dimen name="greeting_message_padding_top">70dp</dimen>
+    <dimen name="greeting_message_text_size">30sp</dimen>
     <dimen name="settings_name_text_size">30dp</dimen>
     <dimen name="horizontal_scroll_in_settings_margin_top">20dp</dimen>
     <dimen name="chip_from_chipgroup_margin_start_end">5dp</dimen>
@@ -33,4 +37,8 @@
     <dimen name="main_layout_margin_bottom">50dp</dimen>
     <dimen name="input_edit_text_corner_radius">15dp</dimen>
     <dimen name="input_layout_margin_top">11dp</dimen>
+    <dimen name="image_view_layout_height">481dp</dimen>
+    <dimen name="collapsing_toolbar_app_bar_height">180dp</dimen>
+    <dimen name="collapsing_toolbar_fab_margin">16dp</dimen>
+    <dimen name="collapsing_toolbar_text_margin">16dp</dimen>
 </resources>
