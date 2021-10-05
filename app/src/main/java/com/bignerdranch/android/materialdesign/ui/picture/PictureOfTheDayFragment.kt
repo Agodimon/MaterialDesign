@@ -13,9 +13,11 @@ import androidx.lifecycle.ViewModelProvider
 import coil.api.load
 import com.bignerdranch.android.materialdesign.R
 import com.bignerdranch.android.materialdesign.databinding.MainFragmentBinding
+import com.bignerdranch.android.materialdesign.databinding.MainFragmentStartBinding
 import com.bignerdranch.android.materialdesign.model.rest.PictureOfTheDayData
 import com.bignerdranch.android.materialdesign.ui.MainActivity
 import com.bignerdranch.android.materialdesign.ui.api.ApiActivity
+import com.bignerdranch.android.materialdesign.ui.collapsingtoolbar.CollapsingToolbarActivity
 import com.bignerdranch.android.materialdesign.util.hide
 import com.bignerdranch.android.materialdesign.util.show
 import com.bignerdranch.android.materialdesign.util.toast
@@ -25,9 +27,12 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.*
 import kotlinx.android.synthetic.main.main_fragment.*
 
+const val BOTTOM_SHEET_HEADER = "BottomSheetHeader"
+const val BOTTOM_SHEET_CONTENT = "BottomSheetContent"
+
 class PictureOfTheDayFragment : Fragment() {
 
-    private var _binding: MainFragmentBinding? = null
+    private var _binding: MainFragmentStartBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: PictureOfTheDayViewModel by lazy {
@@ -43,7 +48,7 @@ class PictureOfTheDayFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = MainFragmentBinding.inflate(inflater, container, false)
+        _binding = MainFragmentStartBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -132,6 +137,9 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val intent = Intent(context, CollapsingToolbarActivity::class.java)
+        intent.putExtra(BOTTOM_SHEET_HEADER, bottomSheetHeader.text)
+        intent.putExtra(BOTTOM_SHEET_CONTENT, bottomSheetContent.text)
         when (item.itemId) {
             R.id.app_bar_fav -> startActivity(Intent(context,ApiActivity::class.java))
             R.id.app_bar_settings -> activity?.apply {

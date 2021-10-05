@@ -1,4 +1,5 @@
-import android.content.Context
+
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -69,7 +70,7 @@ class SettingsFragment : Fragment() {
     private fun setSharedPreferencesSettings() {
         activity?.let {
             currentTheme =
-                it.getSharedPreferences(SETTINGS_SHARED_PREFERENCES, Context.MODE_PRIVATE)
+                it.getSharedPreferences(SETTINGS_SHARED_PREFERENCES, MODE_PRIVATE)
                     .getInt(THEME_NAME_SHARED_PREFERENCES, MY_DEFAULT_THEME)
             when (currentTheme) {
                 MY_CUSTOM_THEME_BLUE -> {
@@ -88,7 +89,7 @@ class SettingsFragment : Fragment() {
     private fun saveThemeSettings(currentTheme: Int, style: Int) {
         this.currentTheme = currentTheme
         activity?.let {
-            with(it.getSharedPreferences(SETTINGS_SHARED_PREFERENCES, Context.MODE_PRIVATE).edit()) {
+            with(it.getSharedPreferences(SETTINGS_SHARED_PREFERENCES, MODE_PRIVATE).edit()) {
                 putInt(THEME_NAME_SHARED_PREFERENCES, currentTheme).apply()
                 putInt(THEME_RES_ID, style).apply()
             }

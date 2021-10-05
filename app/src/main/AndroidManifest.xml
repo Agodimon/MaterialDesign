@@ -25,6 +25,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.bignerdranch.android.materialdesign.ui.collapsingtoolbar.CollapsingToolbarActivity" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

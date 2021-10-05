@@ -38,8 +38,9 @@ class EarthViewModel(
                 ) {
                     if (response.isSuccessful && response.body() != null) {
                         val earthPhoto = response.body()?.url
-                        if(earthPhoto == null) {
-                            observeEarthPhotos.value = PictureOfTheDayDataEarth.Error(Throwable("no photos"))
+                        if (earthPhoto == null) {
+                            observeEarthPhotos.value =
+                                PictureOfTheDayDataEarth.Error(Throwable("no photos"))
                         }
                     } else {
                         val message = response.message()
@@ -47,7 +48,8 @@ class EarthViewModel(
                             observeEarthPhotos.value =
                                 PictureOfTheDayDataEarth.Error(Throwable("Unidentified error"))
                         } else {
-                            observeEarthPhotos.value = PictureOfTheDayDataEarth.Error(Throwable(message))
+                            observeEarthPhotos.value =
+                                PictureOfTheDayDataEarth.Error(Throwable(message))
                         }
                     }
                 }

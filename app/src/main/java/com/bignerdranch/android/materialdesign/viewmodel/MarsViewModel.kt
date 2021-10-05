@@ -38,9 +38,10 @@ class MarsViewModel(
                     if (response.isSuccessful && response.body() != null) {
                         val marsPhotos = response.body()?.photos
                         val marsPhoto = marsPhotos?.firstOrNull()
-                        if(marsPhoto == null) {
-                            observeMarsPhotos.value = PictureOfTheDayDataMars.Error(Throwable("no photos"))
-                        }else {
+                        if (marsPhoto == null) {
+                            observeMarsPhotos.value =
+                                PictureOfTheDayDataMars.Error(Throwable("no photos"))
+                        } else {
                             observeMarsPhotos.value =
                                 PictureOfTheDayDataMars.Success(marsPhoto)
                         }
@@ -50,7 +51,8 @@ class MarsViewModel(
                             observeMarsPhotos.value =
                                 PictureOfTheDayDataMars.Error(Throwable("Unidentified error"))
                         } else {
-                            observeMarsPhotos.value = PictureOfTheDayDataMars.Error(Throwable(message))
+                            observeMarsPhotos.value =
+                                PictureOfTheDayDataMars.Error(Throwable(message))
                         }
                     }
                 }
