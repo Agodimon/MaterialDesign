@@ -4,8 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.ChangeBounds
+import androidx.transition.ChangeImageTransform
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import com.bignerdranch.android.materialdesign.R
 import com.bignerdranch.android.materialdesign.databinding.FragmentMarsBinding
 import com.bignerdranch.android.materialdesign.model.rest.PictureOfTheDayDataMars
@@ -17,7 +23,7 @@ class MarsFragment : Fragment() {
 
     private var _binding: FragmentMarsBinding? = null
     private val binding get() = _binding!!
-
+    private var isExpanded = false
     private val viewModel: MarsViewModel by lazy {
         ViewModelProvider(this).get(MarsViewModel::class.java)
     }
@@ -43,6 +49,18 @@ class MarsFragment : Fragment() {
 
                 val serverResponseData = data.serverResponseData
                 val url = serverResponseData.imgSrc
+                binding.imageViewMars .setOnClickListener() {
+                    isExpanded = !isExpanded
+                    val set = TransitionSet()
+                        .addTransition(ChangeBounds())
+                        .addTransition(ChangeImageTransform())
+                    TransitionManager.beginDelayedTransition(binding.fragmentContainerViewMars, set)
+                    binding.imageViewMars.scaleType = if (isExpanded) {
+                        ImageView.ScaleType.FIT_CENTER
+                    } else {
+                        ImageView.ScaleType.FIT_CENTER
+                    }
+                }
                 if (url.isNullOrEmpty()) {
                     toast("Url is empty")
                 } else {
