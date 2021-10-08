@@ -41,6 +41,24 @@ class MarsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getData().observe(viewLifecycleOwner, { renderData(it) })
+
+        changeImageBounds()
+
+    }
+
+    private fun changeImageBounds() {
+        binding.imageViewMars.setOnClickListener() {
+            isExpanded = !isExpanded
+            val set = TransitionSet()
+                .addTransition(ChangeBounds())
+                .addTransition(ChangeImageTransform())
+            TransitionManager.beginDelayedTransition(binding.fragmentContainerViewMars, set)
+            binding.imageViewMars.scaleType = if (isExpanded) {
+                ImageView.ScaleType.CENTER_CROP
+            } else {
+                ImageView.ScaleType.FIT_CENTER
+            }
+        }
     }
 
     private fun renderData(data: PictureOfTheDayDataMars) {
@@ -49,18 +67,6 @@ class MarsFragment : Fragment() {
 
                 val serverResponseData = data.serverResponseData
                 val url = serverResponseData.imgSrc
-                binding.imageViewMars .setOnClickListener() {
-                    isExpanded = !isExpanded
-                    val set = TransitionSet()
-                        .addTransition(ChangeBounds())
-                        .addTransition(ChangeImageTransform())
-                    TransitionManager.beginDelayedTransition(binding.fragmentContainerViewMars, set)
-                    binding.imageViewMars.scaleType = if (isExpanded) {
-                        ImageView.ScaleType.FIT_CENTER
-                    } else {
-                        ImageView.ScaleType.FIT_CENTER
-                    }
-                }
                 if (url.isNullOrEmpty()) {
                     toast("Url is empty")
                 } else {

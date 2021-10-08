@@ -10,11 +10,13 @@
     tools:context=".ui.api.MarsFragment">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.bignerdranch.android.materialdesign.util.EquilateralImageView
         android:id="@+id/image_view_mars"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="@color/white_smoke"
+        android:paddingTop="20dp"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/bg_mars" />
 
