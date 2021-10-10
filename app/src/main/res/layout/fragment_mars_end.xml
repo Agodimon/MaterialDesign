@@ -43,6 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
+
     <TextView
         android:id="@+id/include"
         layout="@layout/bottom_sheet_layout"
@@ -56,10 +57,8 @@
         android:text="Планета Марс. Четвёртая по удалённости от Солнца и седьмая по размеру планета Солнечной системы; масса планеты составляет 10,7% массы Земли. Названа в честь Марса - древнеримского бога войны, соответствующего древнегреческому Аресу. Иногда Марс называют «красной планетой» из-за красноватого оттенка поверхности, придаваемого ей минералом маггемитом - γ-оксидом железа."
         android:textColor="#191717"
         android:textSize="22sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="parent" />
-
+        app:layout_constraintBottom_toBottomOf="@+id/image_view_mars"
+        app:layout_constraintStart_toStartOf="parent" />"
 
     <LinearLayout
         android:id="@+id/linearLayout"

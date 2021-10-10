@@ -60,7 +60,6 @@
                 app:srcCompat="@drawable/ic_no_photo_vector" />
         </androidx.constraintlayout.motion.widget.MotionLayout>
     </androidx.core.widget.NestedScrollView>
-    <include layout="@layout/bottom_sheet_layout" />
         <FrameLayout
             android:id="@+id/loadingLayout"
             android:layout_width="match_parent"
@@ -75,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
         </FrameLayout>
+    <include layout="@layout/bottom_sheet_layout"/>
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"

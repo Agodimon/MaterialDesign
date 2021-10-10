@@ -5,11 +5,16 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.ChangeBounds
+import androidx.transition.ChangeImageTransform
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import coil.api.load
 import com.bignerdranch.android.materialdesign.R
 import com.bignerdranch.android.materialdesign.databinding.MainFragmentBinding
@@ -42,7 +47,7 @@ class PictureOfTheDayFragment : Fragment() {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private lateinit var bottomSheetHeader: TextView
     private lateinit var bottomSheetContent: TextView
-
+    private var isExpanded = false
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -68,6 +73,18 @@ class PictureOfTheDayFragment : Fragment() {
         viewModel.getData().observe(viewLifecycleOwner, {
             renderData(it)
         })
+        binding.imageView.setOnClickListener() {
+            isExpanded = !isExpanded
+            val set = TransitionSet()
+                .addTransition(ChangeBounds())
+                .addTransition(ChangeImageTransform())
+            TransitionManager.beginDelayedTransition(binding.main, set)
+            binding.imageView.scaleType = if (isExpanded) {
+                ImageView.ScaleType.CENTER_CROP
+            } else {
+                ImageView.ScaleType.FIT_CENTER
+            }
+        }
     }
 
     private fun renderData(data: PictureOfTheDayData) {
@@ -141,7 +158,7 @@ class PictureOfTheDayFragment : Fragment() {
         intent.putExtra(BOTTOM_SHEET_HEADER, bottomSheetHeader.text)
         intent.putExtra(BOTTOM_SHEET_CONTENT, bottomSheetContent.text)
         when (item.itemId) {
-            R.id.app_bar_fav -> startActivity(Intent(context,ApiActivity::class.java))
+            R.id.app_bar_fav -> startActivity(Intent(context, ApiActivity::class.java))
             R.id.app_bar_settings -> activity?.apply {
                 this.supportFragmentManager
                     .beginTransaction()
