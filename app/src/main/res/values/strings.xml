@@ -20,6 +20,8 @@
     <string name="mars" translatable="false">Mars</string>
     <string name="weather" translatable="false">Weather</string>
     <string name="greeting_message">Picture Of The Day. Press to button here for begin!</string>
+    <string name="recycler_header">Заметки</string>
+    <string name="recyclerviewhw6">RecyclerViewHW6</string>
 
 </resources>
 

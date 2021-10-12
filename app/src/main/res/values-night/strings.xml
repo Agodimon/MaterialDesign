@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="name_of_my_custom_theme_red">Red style</string>
+    <string name="recycler_header">Заметки</string>
+    <string name="recyclerviewhw6">RecyclerViewHW6</string>
+
 </resources>

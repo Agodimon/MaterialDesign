@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.bignerdranch.android.materialdesign.R
+import com.bignerdranch.android.materialdesign.RecyclerActivity
 import com.bignerdranch.android.materialdesign.ui.api.ApiActivity
 import com.bignerdranch.android.materialdesign.ui.collapsingtoolbar.CollapsingToolbarActivity
 import com.bignerdranch.android.materialdesign.util.toast
@@ -30,6 +31,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
             when (menuItem.itemId) {
                 R.id.navigation_one -> startActivity(Intent(context, CollapsingToolbarActivity::class.java))
                 R.id.navigation_two -> toast("2")
+                R.id.navigation_three->startActivity(Intent(context, RecyclerActivity::class.java))
             }
             true
         }
