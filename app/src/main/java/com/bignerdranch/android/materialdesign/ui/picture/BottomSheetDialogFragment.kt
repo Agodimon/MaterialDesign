@@ -5,10 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.bignerdranch.android.materialdesign.R
-import com.bignerdranch.android.materialdesign.RecyclerActivity
-import com.bignerdranch.android.materialdesign.ui.api.ApiActivity
+import com.bignerdranch.android.materialdesign.ui.recycler.RecyclerActivity
 import com.bignerdranch.android.materialdesign.ui.collapsingtoolbar.CollapsingToolbarActivity
 import com.bignerdranch.android.materialdesign.util.toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment

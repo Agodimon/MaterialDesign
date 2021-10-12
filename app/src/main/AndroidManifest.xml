@@ -13,7 +13,7 @@
         android:theme="@style/DefaultTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".RecyclerActivity"
+            android:name=".ui.recycler.RecyclerActivity"
             android:exported="true" />
         <activity
             android:name=".ui.api.ApiActivity"
