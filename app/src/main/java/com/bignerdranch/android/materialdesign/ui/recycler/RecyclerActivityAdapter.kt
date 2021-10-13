@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.materialdesign.R
 
@@ -79,15 +80,33 @@ class RecyclerActivityAdapter(
                 }
                 findViewById<AppCompatEditText>(R.id.recycler_view_item_edit_text).visibility =
                     if (data.second) View.VISIBLE else View.GONE
+                findViewById<AppCompatImageView>(R.id.addItemImageView).setOnClickListener {
+                    addItem()
+                }
+                findViewById<AppCompatImageView>(R.id.removeItemImageView).setOnClickListener {
+                    removeItem()
+                }
             }
+
         }
 
         override fun onItemSelected() {
             itemView.setBackgroundColor(Color.LTGRAY)
         }
 
+        private fun generateItem() = Data("New note", "")
         override fun onItemClear() {
             itemView.setBackgroundColor(0)
+        }
+
+        private fun addItem() {
+            data.add(layoutPosition, Pair(generateItem(), false))
+            notifyItemInserted(layoutPosition)
+        }
+
+        private fun removeItem() {
+            data.removeAt(layoutPosition)
+            notifyItemRemoved(layoutPosition)
         }
 
         private fun toggleText() {

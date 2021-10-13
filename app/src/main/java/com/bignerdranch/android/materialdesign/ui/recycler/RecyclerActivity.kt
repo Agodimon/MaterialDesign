@@ -39,6 +39,7 @@ class RecyclerActivity : AppCompatActivity() {
         binding.recyclerActivityFAB.setOnClickListener {
             adapter.appendItem()
         }
+
         ItemTouchHelper(ItemTouchHelperCallback(adapter)).attachToRecyclerView(binding.recyclerView)
     }
 }
