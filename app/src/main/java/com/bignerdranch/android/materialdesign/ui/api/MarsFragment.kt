@@ -47,6 +47,7 @@ class MarsFragment : Fragment() {
         viewModel.getData().observe(viewLifecycleOwner, { renderData(it) })
 
         changeImageBounds()
+
         showDescribes()
     }
 
