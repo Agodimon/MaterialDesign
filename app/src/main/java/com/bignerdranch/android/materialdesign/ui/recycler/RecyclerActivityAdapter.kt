@@ -86,6 +86,14 @@ class RecyclerActivityAdapter(
                 findViewById<AppCompatImageView>(R.id.removeItemImageView).setOnClickListener {
                     removeItem()
                 }
+                findViewById<AppCompatImageView>(R.id.moveItemUp).setOnClickListener {
+                    moveUp()
+                }
+
+                findViewById<AppCompatImageView>(R.id.moveItemDown).setOnClickListener {
+                    moveDown()
+                }
+
             }
 
         }
@@ -107,6 +115,24 @@ class RecyclerActivityAdapter(
         private fun removeItem() {
             data.removeAt(layoutPosition)
             notifyItemRemoved(layoutPosition)
+        }
+
+        private fun moveUp() {
+            layoutPosition.takeIf { it > 1 }?.also {
+                data.removeAt(it).apply {
+                    data.add(it - 1, this)
+                }
+                notifyItemMoved(it, it - 1)
+            }
+        }
+
+        private fun moveDown() {
+            layoutPosition.takeIf { it < itemCount - 1 }?.also {
+                data.removeAt(it).apply {
+                    data.add(it + 1, this)
+                }
+                notifyItemMoved(it, it + 1)
+            }
         }
 
         private fun toggleText() {
