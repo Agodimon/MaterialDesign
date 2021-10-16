@@ -77,7 +77,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
         </FrameLayout>
-    <include  layout="@layout/fragment_main_explanation_text" />
+    <include android:id="@+id/include_layout_tv"
+        layout="@layout/fragment_main_explanation_text" />
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
