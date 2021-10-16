@@ -2,6 +2,7 @@ package com.bignerdranch.android.materialdesign.ui.picture
 
 import SettingsFragment
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -98,6 +99,7 @@ class PictureOfTheDayFragment : Fragment() {
                 val url = serverResponseData.image
                 data.serverResponseData.explanation?.let {
                     binding.includeLayoutTv.textView.text = it
+                    binding.includeLayoutTv.textView.typeface = Typeface.createFromAsset(requireActivity().assets,"MachineGunkNyqg.ttf")
                 }
                 if (url.isNullOrEmpty()) {
                     toast("Url is empty")
