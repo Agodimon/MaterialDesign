@@ -4,7 +4,15 @@ import SettingsFragment
 import android.content.Intent
 import android.graphics.Typeface
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.BackgroundColorSpan
+import android.text.style.BulletSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.TypefaceSpan
+
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
@@ -99,7 +107,36 @@ class PictureOfTheDayFragment : Fragment() {
                 val url = serverResponseData.image
                 data.serverResponseData.explanation?.let {
                     binding.includeLayoutTv.textView.text = it
-                    binding.includeLayoutTv.textView.typeface = Typeface.createFromAsset(requireActivity().assets,"MachineGunkNyqg.ttf")
+                    binding.includeLayoutTv.textView.typeface =
+                        Typeface.createFromAsset(requireActivity().assets, "MachineGunkNyqg.ttf")
+                    val spannable = SpannableStringBuilder(getString(R.string.discribe_mars))
+                    spannable.setSpan(
+                        ForegroundColorSpan(resources.getColor(R.color.yellow)),
+                        0,
+                        218,
+                        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+                    spannable.setSpan(
+                        ForegroundColorSpan(resources.getColor(R.color.chartreuse)),
+                        218,
+                        286,
+                        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+                    spannable.setSpan(
+                        BackgroundColorSpan(resources.getColor(R.color.gold)),
+                        286,
+                        400,
+                        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        spannable.setSpan(
+                            TypefaceSpan(resources.getFont(R.font.movie)),
+                            401,
+                            490,
+                            Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                        )
+                    }
+                    binding.includeLayoutTvTwo.textViewTwo.text = spannable
                 }
                 if (url.isNullOrEmpty()) {
                     toast("Url is empty")
