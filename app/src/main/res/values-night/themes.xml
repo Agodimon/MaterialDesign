@@ -28,7 +28,6 @@
         <!-- Customize your theme here. -->
         <item name="colorSurface">@color/lavender</item>
         <item name="colorOnSurface">@color/steel_blue</item>
-        <item name="android:text">@font/fontdiner_swanky</item>
         <item name="android:textColor">@color/blue</item>
     </style>
 
@@ -46,7 +45,7 @@
         <!-- Customize your theme here. -->
         <item name="colorSurface">@color/pink</item>
         <item name="colorOnSurface">@color/antique_white</item>
-        <item name="android:text">@font/fontdiner_swanky</item>
+
     </style>
     <style name="Theme.COLLAPSING_TOOLBAR_LAYOUT" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->

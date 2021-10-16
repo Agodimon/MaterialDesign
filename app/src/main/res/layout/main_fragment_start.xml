@@ -7,7 +7,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="70dp">
 
         <androidx.constraintlayout.motion.widget.MotionLayout
@@ -65,12 +65,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_no_photo_vector"
-
                 />
+            <include android:id="@+id/include_layout_tv" layout="@layout/fragment_main_explanation_text" />
         </androidx.constraintlayout.motion.widget.MotionLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <include  layout="@layout/fragment_main_explanation_text" />
 
     <FrameLayout
         android:id="@+id/loadingLayout"
@@ -87,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
     </FrameLayout>
-
+    <include layout="@layout/bottom_sheet_layout" />
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"

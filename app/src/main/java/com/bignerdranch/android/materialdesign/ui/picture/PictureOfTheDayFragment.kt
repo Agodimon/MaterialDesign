@@ -96,6 +96,9 @@ class PictureOfTheDayFragment : Fragment() {
                 }
                 val serverResponseData = data.serverResponseData
                 val url = serverResponseData.image
+                data.serverResponseData.explanation?.let {
+                    binding.includeLayoutTv.textView.text = it
+                }
                 if (url.isNullOrEmpty()) {
                     toast("Url is empty")
                 } else {
