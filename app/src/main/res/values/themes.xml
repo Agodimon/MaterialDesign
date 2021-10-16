@@ -31,6 +31,8 @@
         <item name="colorOnSurface">@color/steel_blue</item>
         <item name="android:text">@font/fontdiner_swanky</item>
         <item name="android:textColor">@color/blue</item>
+        <item name="background">@color/white</item>
+
     </style>
 
     <style name="MyCustomThemeRed" parent="DefaultTheme">

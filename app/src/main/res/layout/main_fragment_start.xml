@@ -8,7 +8,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:layout_marginBottom="70dp">
 
         <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/main"
@@ -70,7 +70,7 @@
         </androidx.constraintlayout.motion.widget.MotionLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <include  layout="@layout/bottom_sheet_layout" />
+    <include  layout="@layout/fragment_main_explanation_text" />
 
     <FrameLayout
         android:id="@+id/loadingLayout"
