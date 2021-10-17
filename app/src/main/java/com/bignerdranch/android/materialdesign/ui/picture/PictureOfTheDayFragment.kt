@@ -2,13 +2,26 @@ package com.bignerdranch.android.materialdesign.ui.picture
 
 import SettingsFragment
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.BackgroundColorSpan
+import android.text.style.BulletSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.TypefaceSpan
+
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.provider.FontRequest
+import androidx.core.provider.FontsContractCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.ChangeBounds
@@ -30,7 +43,7 @@ import com.bignerdranch.android.materialdesign.viewmodel.PictureOfTheDayViewMode
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.*
-import kotlinx.android.synthetic.main.main_fragment.*
+
 
 const val BOTTOM_SHEET_HEADER = "BottomSheetHeader"
 const val BOTTOM_SHEET_CONTENT = "BottomSheetContent"
@@ -70,6 +83,10 @@ class PictureOfTheDayFragment : Fragment() {
         bottomSheetHeader = view.findViewById(R.id.bottom_sheet_description_header)
         bottomSheetContent = view.findViewById(R.id.bottom_sheet_description)
         setBottomAppBar(view)
+
+
+
+
         viewModel.getData().observe(viewLifecycleOwner, {
             renderData(it)
         })
@@ -96,6 +113,61 @@ class PictureOfTheDayFragment : Fragment() {
                 }
                 val serverResponseData = data.serverResponseData
                 val url = serverResponseData.image
+                data.serverResponseData.explanation?.let {
+                    binding.includeLayoutTv.textView.text = it
+                    binding.includeLayoutTv.textView.typeface =
+                        Typeface.createFromAsset(requireActivity().assets, "MachineGunkNyqg.ttf")
+
+
+                    val spannable = SpannableStringBuilder(getString(R.string.discribe_mars))
+
+                    spannable.setSpan(
+                        ForegroundColorSpan(resources.getColor(R.color.yellow)),
+                        0,
+                        218,
+                        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+                    spannable.setSpan(
+                        ForegroundColorSpan(resources.getColor(R.color.chartreuse)),
+                        218,
+                        286,
+                        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+                    spannable.setSpan(
+                        BackgroundColorSpan(resources.getColor(R.color.gold)),
+                        286,
+                        400,
+                        Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        spannable.setSpan(
+                            TypefaceSpan(resources.getFont(R.font.movie)),
+                            401,
+                            490,
+                            Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                        )
+                    }
+
+                    val request = FontRequest("com.google.android.gms.fonts",
+                        "com.google.android.gms","Aguafina Script",R.array.com_google_android_gms_fonts_certs)
+                    val fontCallback = object : FontsContractCompat.FontRequestCallback(){
+                        override fun onTypefaceRetrieved(typeface: Typeface?) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                                typeface?.let {
+                                    spannable.setSpan(TypefaceSpan(it),500,
+                                        spannable.length,Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                                }
+                            }
+                        }
+                    }
+                    FontsContractCompat.requestFont(requireContext(),request,fontCallback,
+                        Handler(Looper.getMainLooper())
+                    )
+                    binding.includeLayoutTvTwo.textViewTwo.text = spannable
+
+                }
+
+
                 if (url.isNullOrEmpty()) {
                     toast("Url is empty")
                 } else {
