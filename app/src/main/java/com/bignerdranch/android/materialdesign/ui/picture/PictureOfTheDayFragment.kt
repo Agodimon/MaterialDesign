@@ -11,10 +11,8 @@ import android.os.Looper
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.BackgroundColorSpan
-import android.text.style.BulletSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.TypefaceSpan
-
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
@@ -30,7 +28,6 @@ import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import coil.api.load
 import com.bignerdranch.android.materialdesign.R
-import com.bignerdranch.android.materialdesign.databinding.MainFragmentBinding
 import com.bignerdranch.android.materialdesign.databinding.MainFragmentStartBinding
 import com.bignerdranch.android.materialdesign.model.rest.PictureOfTheDayData
 import com.bignerdranch.android.materialdesign.ui.MainActivity
