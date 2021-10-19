@@ -30,6 +30,9 @@
         <item name="colorOnSurface">@color/steel_blue</item>
         <item name="android:textColor">@color/blue</item>
     </style>
+    <style name="MyCustomThemeBlue.Splash">
+        <item name="android:windowBackground">@drawable/splash_background_drawable</item>
+    </style>
 
     <style name="MyCustomThemeRed" parent="DefaultTheme">
         <!-- Primary brand color. -->
